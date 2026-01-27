@@ -35,8 +35,6 @@ export const Footer = () => {
                             </div>
                         </div>
                     </div>
-
-                    {/* Quick Links */}
                     <div>
                         <h3 className="text-white font-semibold mb-6">Quick Links</h3>
                         <ul className="space-y-4 text-sm">
@@ -46,8 +44,6 @@ export const Footer = () => {
                             <li><a href="/appointment" className="hover:text-blue-400 transition-colors">Book Appointment</a></li>
                         </ul>
                     </div>
-
-                    {/* Services */}
                     <div>
                         <h3 className="text-white font-semibold mb-6">Our Services</h3>
                         <ul className="space-y-4 text-sm">
@@ -57,8 +53,6 @@ export const Footer = () => {
                             <li><a href="/services/diet" className="hover:text-blue-400 transition-colors">Diet & Nutrition</a></li>
                         </ul>
                     </div>
-
-                    {/* Contact Info */}
                     <div>
                         <h3 className="text-white font-semibold mb-6">Contact Us</h3>
                         <ul className="space-y-4 text-sm">
