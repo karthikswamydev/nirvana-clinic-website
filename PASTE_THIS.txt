@@ -1,0 +1,21 @@
+// PASTE THIS IN Home.tsx
+
+// 1. ADD IMPORT AT TOP (line 8, after other imports):
+import { HomeQuickNavSplit } from "../components/HomeQuickNav";
+// OR use pills variant:
+// import { HomeQuickNavPills } from "../components/HomeQuickNav";
+
+// 2. INSERT THIS BLOCK after the "Essence of Nirvana" section
+// (After line 157, before the "Section Break" comment)
+
+{/* Quick Navigation */}
+<motion.div
+  initial={{ opacity: 0, y: 30 }}
+  whileInView={{ opacity: 1, y: 0 }}
+  transition={{ duration: 0.6 }}
+  viewport={{ once: true }}
+>
+  <HomeQuickNavSplit />
+</motion.div>
+
+// That's it! The navigation will appear between your intro and services section.
