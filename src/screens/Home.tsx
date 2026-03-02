@@ -2,12 +2,18 @@ import { ChakraLogo } from "../assets/Icon";
 import { HealingAura } from "../assets/Icon/HealingAura";
 import HomeQuickNavEnhanced from "../components/HomeQuickNav";
 import { ScrollRevealText } from "../components/ScrollRevealText";
+import Aurora from "../components/Aurora";
+import CursorConfetti from "../components/CursorConfetti";
 import Service from "./Service";
 import { motion } from "motion/react";
 
 const Home = () => {
     return (
-        <div className="">
+        <div className="relative">
+            <div className="fixed inset-0 -z-10">
+                <Aurora colorStops={['#16a34a', '#0da3a1', '#16a34a']} amplitude={1.2} blend={0.6} speed={0.8} />
+            </div>
+            <CursorConfetti />
             {/* Hero Section */}
             {/* Theme: emerald-600: #059669, teal-600: #0d9488, emerald-50: #ecfdf5 */}
             <section className="relative w-full  py-20 lg:py-32 overflow-hidden">
@@ -25,17 +31,51 @@ const Home = () => {
                         >
                             {/* Headline with cut words effect */}
                             <motion.h1
-                                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] tracking-tight"
-                                initial={{ opacity: 0, y: 30 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+                                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] flex flex-col"
                             >
-                                <span className="bg-linear-to-r from-black to-green-600 bg-clip-text text-transparent">Nirvana</span>{' '}
-                                <span className="relative inline-block">
-                                    <span className="relative z-10 text-white px-4">Integrated</span>
-                                    <span className="absolute inset-0 bg-linear-to-r from-emerald-600 to-teal-600 rounded-lg transform -skew-x-6" />
+                                <span className="inline-block relative">
+                                    {['N', 'i', 'r', 'v', 'a', 'n', 'a'].map((letter, i) => (
+                                        <motion.span
+                                            key={i}
+                                            className="bg-green-900 bg-clip-text text-transparent inline-block relative"
+                                            initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                            animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                            transition={{ duration: 0.6, delay: 0.1 + i * 0.05, ease: "easeOut" }}
+                                        >
+                                            {letter}
+                                        </motion.span>
+                                    ))}
+                                    <motion.span
+                                        className="absolute bottom-0 left-0 h-[2px] bg-green-900/50"
+                                        initial={{ width: 0 }}
+                                        animate={{ width: '100%' }}
+                                        transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
+                                    />
                                 </span>
-                                {' '}<span className="bg-linear-to-r from-black to-green-600 bg-clip-text text-transparent">Clinic</span>
+                                <span>
+                                    {['I', 'n', 't', 'e', 'g', 'r', 'a', 't', 'e', 'd'].map((letter, i) => (
+                                        <motion.span
+                                            key={i}
+                                            className="relative z-10 text-green-900 inline-block"
+                                            initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                            animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                            transition={{ duration: 0.6, delay: 0.45 + i * 0.05, ease: "easeOut" }}
+                                        >
+                                            {letter}
+                                        </motion.span>
+                                    ))}{' '}
+                                    {['C', 'l', 'i', 'n', 'i', 'c'].map((letter, i) => (
+                                        <motion.span
+                                            key={i}
+                                            className="bg-green-900 bg-clip-text text-transparent inline-block"
+                                            initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                            animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                            transition={{ duration: 0.6, delay: 0.95 + i * 0.05, ease: "easeOut" }}
+                                        >
+                                            {letter}
+                                        </motion.span>
+                                    ))}
+                                </span>
                             </motion.h1>
 
                             <motion.p
@@ -154,16 +194,6 @@ const Home = () => {
                 </section>
 
                 <section className="max-w-7xl mx-auto mt-20 px-4 space-y-16">
-
-                    {/* Quick Navigation */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 30 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 0.6 }}
-                        viewport={{ once: true }}
-                    >
-                        <HomeQuickNavEnhanced />
-                    </motion.div>
 
                     {/* Section Break */}
                     <div className="flex items-center justify-center gap-6 py-8">
