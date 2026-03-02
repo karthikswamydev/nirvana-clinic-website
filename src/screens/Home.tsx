@@ -1,6 +1,5 @@
 import { ChakraLogo } from "../assets/Icon";
 import { HealingAura } from "../assets/Icon/HealingAura";
-import HomeQuickNavEnhanced from "../components/HomeQuickNav";
 import { ScrollRevealText } from "../components/ScrollRevealText";
 import Aurora from "../components/Aurora";
 import CursorConfetti from "../components/CursorConfetti";
