@@ -11,7 +11,7 @@ const galleryCategories = [
 
 function GalleryPage() {
     return (
-        <div className="min-h-screen flex flex-col bg-gray-50">
+        <div className="min-h-screen flex flex-col ">
             <main className="grow">
                 <div className="max-w-7xl mx-auto px-4 py-16">
                     <motion.div

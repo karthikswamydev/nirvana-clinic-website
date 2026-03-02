@@ -1,0 +1,11 @@
+@keyframes float-slow {
+  0%, 100% {
+    transform: translate(-50%, -50%) translateY(0px) translateX(0px);
+  }
+  33% {
+    transform: translate(-50%, -50%) translateY(-30px) translateX(20px);
+  }
+  66% {
+    transform: translate(-50%, -50%) translateY(20px) translateX(-20px);
+  }
+}
