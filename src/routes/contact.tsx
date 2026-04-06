@@ -1,13 +1,8 @@
 import { createFileRoute } from '@tanstack/react-router'
-import Header from '../components/Header'
-import { Footer } from '../components/Footer'
 import { motion } from 'motion/react'
 
 function ContactPage() {
   return (
-    <div className="min-h-screen flex flex-col ">
-      <Header />
-      <main className="grow">
         <div className="max-w-7xl mx-auto px-4 py-16">
           <motion.div
             className="text-center space-y-4 mb-16"
@@ -15,7 +10,7 @@ function ContactPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-[#0F9B4A] via-[#0EB4A0] to-[#1B4C9B] bg-clip-text text-transparent font-['Poppins']">
+            <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-brand-forest via-brand-olive to-brand-forest bg-clip-text text-transparent font-['Poppins']">
               Contact Us
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-['Poppins']">
@@ -31,13 +26,13 @@ function ContactPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="bg-white rounded-2xl p-8 shadow-lg">
-                <h2 className="text-2xl font-semibold bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] bg-clip-text text-transparent mb-6 font-['Poppins']">
+                <h2 className="text-2xl font-semibold bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-6 font-['Poppins']">
                   Get in Touch
                 </h2>
                 <div className="space-y-6">
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#0EB4A0]/10 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-6 h-6 text-[#0EB4A0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-brand-olive/15 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-6 h-6 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                       </svg>
                     </div>
@@ -48,8 +43,8 @@ function ContactPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#0EB4A0]/10 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-6 h-6 text-[#0EB4A0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-brand-olive/15 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-6 h-6 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                       </svg>
                     </div>
@@ -61,8 +56,8 @@ function ContactPage() {
                   </div>
 
                   <div className="flex items-start space-x-4">
-                    <div className="w-12 h-12 bg-[#0EB4A0]/10 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-6 h-6 text-[#0EB4A0]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <div className="w-12 h-12 bg-brand-olive/15 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-6 h-6 text-brand-forest" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                       </svg>
@@ -97,7 +92,7 @@ function ContactPage() {
               transition={{ duration: 0.8 }}
             >
               <div className="bg-white rounded-2xl p-8 shadow-lg h-full">
-                <h2 className="text-2xl font-semibold bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] bg-clip-text text-transparent mb-6 font-['Poppins']">
+                <h2 className="text-2xl font-semibold bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-6 font-['Poppins']">
                   Send us a Message
                 </h2>
                 <form className="space-y-6">
@@ -105,7 +100,7 @@ function ContactPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Name</label>
                     <input
                       type="text"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB4A0] focus:border-transparent font-['Poppins']"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Your name"
                     />
                   </div>
@@ -113,7 +108,7 @@ function ContactPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Email</label>
                     <input
                       type="email"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB4A0] focus:border-transparent font-['Poppins']"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="your@email.com"
                     />
                   </div>
@@ -121,7 +116,7 @@ function ContactPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Phone</label>
                     <input
                       type="tel"
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB4A0] focus:border-transparent font-['Poppins']"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Your phone number"
                     />
                   </div>
@@ -129,13 +124,13 @@ function ContactPage() {
                     <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Message</label>
                     <textarea
                       rows={6}
-                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#0EB4A0] focus:border-transparent font-['Poppins']"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Tell us about your health concerns..."
                     ></textarea>
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-[#0EB4A0] text-white px-8 py-4 rounded-lg font-semibold hover:bg-[#0a9b8a] transition-colors shadow-lg font-['Poppins']"
+                    className="w-full bg-brand-forest text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-forest/90 transition-colors shadow-lg font-['Poppins']"
                   >
                     Send Message
                   </button>
@@ -156,9 +151,6 @@ function ContactPage() {
             </div>
           </motion.div>
         </div>
-      </main>
-      <Footer />
-    </div>
   )
 }
 

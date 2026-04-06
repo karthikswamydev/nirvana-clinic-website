@@ -47,7 +47,7 @@ export function FacilitiesSection() {
         >
           <h2 className="relative inline-block text-4xl md:text-5xl font-semibold text-gray-900 font-['Poppins']">
             <span
-              className="bg-linear-to-r from-lime-400 to-lime-200 text-green-900 px-4 md:px-5 py-1 md:py-2 inline-block font-bold rounded-lg">
+              className="bg-linear-to-r from-brand-sage to-brand-olive/40 text-brand-forest px-4 md:px-5 py-1 md:py-2 inline-block font-bold rounded-lg">
               Our Facilities
             </span>
           </h2>

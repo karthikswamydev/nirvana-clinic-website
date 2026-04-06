@@ -1,23 +1,44 @@
-
-import { ChakraLogo } from "../assets/Icon";
+import { Link } from "@tanstack/react-router";
 
 export const Footer = () => {
     return (
-        <footer className="bg-green-950 text-slate-300 py-12 border-t border-slate-800">
+        <>
+        
+        <section
+            className="py-16 lg:py-20 px-4 sm:px-6"
+            style={{ backgroundColor: "#2d545e" }}
+            aria-labelledby="prefooter-cta-heading"
+        >
+            <div className="max-w-3xl mx-auto text-center space-y-6">
+                <h2 id="prefooter-cta-heading" className="text-3xl md:text-4xl font-bold text-white tracking-tight">
+                    Begin your path to balanced, natural healing
+                </h2>
+                <p className="text-lg text-white/85 leading-relaxed">
+                    Book a consultation or reach out with questions—we&apos;re here to help you take the next step.
+                </p>
+                <Link
+                    to="/contact"
+                    className="inline-flex items-center justify-center rounded-full bg-white px-8 py-3.5 sm:py-4 text-base font-semibold text-brand-forest shadow-lg shadow-black/15 transition hover:bg-brand-sage"
+                >
+                    Contact Us
+                </Link>
+            </div>
+        </section>
+        <footer
+            className="text-slate-300 py-12 border-t border-white/10"
+            style={{ backgroundColor: "#15282e" }}
+        >
             <div className="max-w-7xl mx-auto px-6 lg:px-8">
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12 mb-12">
                     {/* Brand Section */}
                     <div className="space-y-4">
-                        <div className="flex items-center space-x-3">
-                            <div className="w-10 h-10">
-                                <ChakraLogo width={40} height={40} />
-                            </div>
-                            <span className="text-medium font-bold text-white tracking-tight">
-                                Nirvana Integrated Clinic
-                            </span>
+                        <div className="flex items-start gap-4">
+                        <img 
+            className='max-w-[200px] h-auto object-contain'
+            src="/brand/nirvana-emblem.png"/>
                         </div>
                         <p className="text-sm leading-relaxed text-slate-400">
-                            Restoring balance and harmony through ancient Ayurvedic wisdom and modern holistic care. Your journey to wellness starts here.
+                            Join us on a transformative journey towards holistic wellness—naturopathic care that honors the body&apos;s innate ability to heal.
                         </p>
                         <div className="flex space-x-4 pt-2">
                             {/* Social Placeholders */}
@@ -36,43 +57,55 @@ export const Footer = () => {
                         </div>
                     </div>
                     <div>
-                        <h3 className="text-white font-semibold mb-6">Quick Links</h3>
+                        <h3 className="text-white font-semibold mb-6">Navigation</h3>
                         <ul className="space-y-4 text-sm">
                             <li><a href="/" className="hover:text-blue-400 transition-colors">Home</a></li>
-                            <li><a href="/about" className="hover:text-blue-400 transition-colors">About Us</a></li>
-                            <li><a href="/doctors" className="hover:text-blue-400 transition-colors">Our Doctors</a></li>
-                            <li><a href="/appointment" className="hover:text-blue-400 transition-colors">Book Appointment</a></li>
+                            <li><a href="/treatments" className="hover:text-blue-400 transition-colors">Treatments</a></li>
+                            <li><a href="/services" className="hover:text-blue-400 transition-colors">Services</a></li>
+                            <li><a href="/#testimonials" className="hover:text-blue-400 transition-colors">Testimonials</a></li>
+                            <li><a href="/contact" className="hover:text-blue-400 transition-colors">Contact</a></li>
+                            <li><a href="/privacy" className="hover:text-blue-400 transition-colors">Disclaimer</a></li>
                         </ul>
                     </div>
                     <div>
-                        <h3 className="text-white font-semibold mb-6">Our Services</h3>
+                        <h3 className="text-white font-semibold mb-6">Useful links</h3>
                         <ul className="space-y-4 text-sm">
-                            <li><a href="/services/ayurveda" className="hover:text-blue-400 transition-colors">Ayurvedic Consultation</a></li>
-                            <li><a href="/services/panchakarma" className="hover:text-blue-400 transition-colors">Panchakarma Therapy</a></li>
-                            <li><a href="/services/yoga" className="hover:text-blue-400 transition-colors">Yoga & Meditation</a></li>
-                            <li><a href="/services/diet" className="hover:text-blue-400 transition-colors">Diet & Nutrition</a></li>
+                            <li><a href="/about" className="hover:text-blue-400 transition-colors">About</a></li>
+                            <li><a href="/gallery" className="hover:text-blue-400 transition-colors">Gallery</a></li>
+                            <li><a href="/facilities" className="hover:text-blue-400 transition-colors">Facilities</a></li>
+                            <li><a href="/gallery" className="hover:text-blue-400 transition-colors">Vlogs</a></li>
+                            <li><a href="/privacy" className="hover:text-blue-400 transition-colors">Privacy Policy</a></li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 className="text-white font-semibold mb-6">Our services</h3>
+                        <ul className="space-y-4 text-sm">
+                            <li><a href="/services" className="hover:text-blue-400 transition-colors">Specialized wellness programs</a></li>
+                            <li><a href="/services" className="hover:text-blue-400 transition-colors">Customized health packages</a></li>
+                            <li><a href="/services" className="hover:text-blue-400 transition-colors">Workshops &amp; training</a></li>
+                            <li><a href="/services" className="hover:text-blue-400 transition-colors">Online &amp; teleconsultation</a></li>
                         </ul>
                     </div>
                     <div>
                         <h3 className="text-white font-semibold mb-6">Contact Us</h3>
                         <ul className="space-y-4 text-sm">
                             <li className="flex items-start space-x-3">
-                                <svg className="w-5 h-5 text-blue-500 mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
+                                <svg className="w-5 h-5   mt-0.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
                                 <span>Nirvana Integrated Clinic<br />Paribalan Complex,<br />East Coast Road, Near Bus stand,<br />Manamelkudi,<br />Pudukkottai (dt) – 614620<br />Tamil Nadu</span>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <svg className="w-5 h-5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
+                                <svg className="w-5 h-5   shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" /></svg>
                                 <span>7448811001</span>
                             </li>
                             <li className="flex items-center space-x-3">
-                                <svg className="w-5 h-5 text-blue-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
+                                <svg className="w-5 h-5   shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" /></svg>
                                 <span>contact@nirvanaclinic.com</span>
                             </li>
                         </ul>
                     </div>
                 </div>
 
-                <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
+                <div className="border-t border-white/15 pt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-400">
                     <p>&copy; {new Date().getFullYear()} Nirvana Clinic. All rights reserved.</p>
                     <div className="flex space-x-6 mt-4 md:mt-0">
                         <a href="/privacy" className="hover:text-slate-300 transition-colors">Privacy Policy</a>
@@ -81,6 +114,7 @@ export const Footer = () => {
                 </div>
             </div>
         </footer>
+        </>
     )
 }
 

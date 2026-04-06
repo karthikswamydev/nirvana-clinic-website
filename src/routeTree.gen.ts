@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as VisionRouteImport } from './routes/vision'
 import { Route as TreatmentsRouteImport } from './routes/treatments'
+import { Route as ServicesRouteImport } from './routes/services'
 import { Route as GalleryRouteImport } from './routes/gallery'
 import { Route as FacilitiesRouteImport } from './routes/facilities'
 import { Route as ContactRouteImport } from './routes/contact'
@@ -26,6 +27,11 @@ const VisionRoute = VisionRouteImport.update({
 const TreatmentsRoute = TreatmentsRouteImport.update({
   id: '/treatments',
   path: '/treatments',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ServicesRoute = ServicesRouteImport.update({
+  id: '/services',
+  path: '/services',
   getParentRoute: () => rootRouteImport,
 } as any)
 const GalleryRoute = GalleryRouteImport.update({
@@ -66,6 +72,7 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/treatments': typeof TreatmentsRoute
   '/vision': typeof VisionRoute
 }
@@ -76,6 +83,7 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/treatments': typeof TreatmentsRoute
   '/vision': typeof VisionRoute
 }
@@ -87,6 +95,7 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
+  '/services': typeof ServicesRoute
   '/treatments': typeof TreatmentsRoute
   '/vision': typeof VisionRoute
 }
@@ -99,6 +108,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/gallery'
+    | '/services'
     | '/treatments'
     | '/vision'
   fileRoutesByTo: FileRoutesByTo
@@ -109,6 +119,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/gallery'
+    | '/services'
     | '/treatments'
     | '/vision'
   id:
@@ -119,6 +130,7 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/gallery'
+    | '/services'
     | '/treatments'
     | '/vision'
   fileRoutesById: FileRoutesById
@@ -130,6 +142,7 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
+  ServicesRoute: typeof ServicesRoute
   TreatmentsRoute: typeof TreatmentsRoute
   VisionRoute: typeof VisionRoute
 }
@@ -148,6 +161,13 @@ declare module '@tanstack/react-router' {
       path: '/treatments'
       fullPath: '/treatments'
       preLoaderRoute: typeof TreatmentsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/services': {
+      id: '/services'
+      path: '/services'
+      fullPath: '/services'
+      preLoaderRoute: typeof ServicesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/gallery': {
@@ -202,6 +222,7 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
+  ServicesRoute: ServicesRoute,
   TreatmentsRoute: TreatmentsRoute,
   VisionRoute: VisionRoute,
 }

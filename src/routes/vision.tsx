@@ -1,6 +1,5 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Header from '../components/Header'
-import { Footer } from '../components/Footer'
 import { motion } from 'motion/react'
 
 function VisionPage() {
@@ -15,7 +14,7 @@ function VisionPage() {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
           >
-            <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-[#0F9B4A] via-[#0EB4A0] to-[#1B4C9B] bg-clip-text text-transparent font-['Poppins']">
+            <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-brand-forest via-brand-olive to-brand-forest bg-clip-text text-transparent font-['Poppins']">
               Our Vision
             </h1>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-['Poppins']">
@@ -39,7 +38,7 @@ function VisionPage() {
           </motion.div>
 
           <div className="space-y-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-center bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] bg-clip-text text-transparent mb-12 font-['Poppins']">
+            <h2 className="text-3xl md:text-4xl font-bold text-center bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-12 font-['Poppins']">
               Our Future Multispeciality Centre
             </h2>
 
@@ -87,7 +86,7 @@ function VisionPage() {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 viewport={{ once: true }}
               >
-                <h3 className="text-2xl font-semibold bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] bg-clip-text text-transparent mb-4 font-['Poppins']">
+                <h3 className="text-2xl font-semibold bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-4 font-['Poppins']">
                   {item.title}
                 </h3>
                 {item.description && (
@@ -97,7 +96,7 @@ function VisionPage() {
                   <ul className="space-y-2">
                     {item.points.map((point) => (
                       <li key={point} className="text-gray-700 flex items-start font-['Poppins']">
-                        <span className="text-[#0EB4A0] mr-2 mt-1">•</span>
+                        <span className="text-brand-olive mr-2 mt-1">•</span>
                         {point}
                       </li>
                     ))}
@@ -108,7 +107,7 @@ function VisionPage() {
           </div>
 
           <motion.div
-            className="bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] rounded-2xl p-8 md:p-12 text-white text-center mt-16"
+            className="bg-linear-to-r from-brand-forest to-brand-olive rounded-2xl p-8 md:p-12 text-white text-center mt-16"
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.8 }}
@@ -120,7 +119,6 @@ function VisionPage() {
           </motion.div>
         </div>
       </main>
-      <Footer />
     </div>
   )
 }

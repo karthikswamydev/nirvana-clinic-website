@@ -1,5 +1,6 @@
 export {default as Home} from "./Home"
 export {default as Service} from "./Service"
+export {default as ServicesPage} from "./Services"
 export {default as Treatments} from "./Treatments"
 export {default as FacilitiesPage} from "./Facilities"
 export {default as Conditions} from "./Conditions"

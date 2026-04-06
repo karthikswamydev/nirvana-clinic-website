@@ -1,48 +1,64 @@
 import { Link, useLocation } from '@tanstack/react-router'
 
-const LINKS = [
+type NavItem = {
+  to: '/' | '/about' | '/treatments' | '/services' | '/facilities' | '/gallery' | '/contact'
+  label: string
+  hash?: string
+}
+
+const LINKS: NavItem[] = [
   { to: '/', label: 'Home' },
+  { to: '/about', label: 'About Us' },
   { to: '/treatments', label: 'Treatments' },
-  { to: '/conditions', label: 'Conditions' },
+  { to: '/services', label: 'Services' },
   { to: '/facilities', label: 'Facilities' },
-  { to: '/gallery', label: 'Gallery' },
+  { to: '/gallery', label: 'Resource' },
+  { to: '/contact', label: 'Contact Us' },
 ]
 
 export default function Header() {
   const location = useLocation()
 
-  return (
-    <header className="w-full border-b border-white/20 bg-white/10 backdrop-blur-md">
-      <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        <div className="flex justify-between items-center h-20">
-          {/* Logo */}
-          <div className="shrink-0 flex items-center space-x-3">
-            <div className="flex flex-col items-center">
-              <span className="text-3xl font-bold bg-linear-to-r from-[#1b4280] via-[#0EB4A0] to-[#1B4C9B] bg-clip-text text-transparent font-['Italianno']">
-                Nirvana Integrated Clinic
-              </span>
-              <span className="text-[12px] text-center text-gray-600 font-['Italianno'] -mt-1 tracking-wide">
-                Where Healing Meets Harmony
-              </span>
-            </div>
-          </div>
+  const isActive = (link: NavItem) => {
+    if (link.to === '/' && !link.hash) {
+      return location.pathname === '/' && !location.hash
+    }
+    if (link.hash) {
+      return location.pathname === '/' && location.hash === `#${link.hash}`
+    }
+    return location.pathname === link.to
+  }
 
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center">
-            <div className="inline-flex items-center bg-white/20 backdrop-blur-lg rounded-full p-2 gap-2 border border-white/30 shadow-lg">
+  return (
+    <header className="w-full border-b border-brand-olive/25 backdrop-blur-md">
+      <div className="max-w-7xl mx-auto px-4 lg:px-8">
+        <div className="flex justify-between items-center min-h-20 py-3 gap-4">
+          <Link
+            to="/"
+            className="shrink-0 flex items-center gap-3 sm:gap-4 min-w-0 group"
+            aria-label="Nirvana Integrated Clinic home"
+          >
+            <img 
+            className='max-w-[200px] h-auto object-contain'
+            src="/brand/nirvana-emblem.png"/>
+            
+          </Link>
+
+          <nav className="flex items-center overflow-x-auto max-w-[calc(100vw-11rem)] sm:max-w-none pb-1 [-ms-overflow-style:none] [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+            <div className="inline-flex items-center bg-brand-sage/25 backdrop-blur-lg rounded-full p-1.5 gap-1 border border-brand-olive/30 shadow-sm flex-nowrap">
               {LINKS.map((link) => {
-                const isActive = location.pathname === link.to
+                const active = isActive(link)
                 return (
                   <Link
-                    key={link.to}
+                    key={`${link.to}-${link.label}-${link.hash ?? ''}`}
                     to={link.to}
-                    className={`relative px-6 py-2 rounded-full text-sm font-medium transition-all duration-200 ${isActive
-                      ? 'text-gray-900'
-                      : 'text-gray-600 hover:text-gray-900'
+                    hash={link.hash}
+                    hashScrollIntoView={{ behavior: 'smooth' }}
+                    className={`relative px-3 sm:px-4 py-2 rounded-full text-xs sm:text-sm font-medium transition-all duration-200 whitespace-nowrap shrink-0 ${active ? 'text-brand-forest' : 'text-brand-forest/70 hover:text-brand-forest'
                       }`}
                   >
-                    {isActive && (
-                      <span className="absolute inset-0 bg-white/40 backdrop-blur-md rounded-full shadow-lg border border-white/50" />
+                    {active && (
+                      <span className="absolute inset-0 bg-white/80 backdrop-blur-md rounded-full shadow-md border border-brand-olive/40" />
                     )}
                     <span className="relative z-10">{link.label}</span>
                   </Link>
