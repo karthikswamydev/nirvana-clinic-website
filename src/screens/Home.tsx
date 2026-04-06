@@ -234,10 +234,10 @@ const Home = () => {
                             {/* Headline with cut words effect */}
                             <motion.div style={{ y: heroHeadingY }}>
                             <motion.h1
-                                className="text-5xl md:text-6xl lg:text-7xl font-bold leading-[1.1] flex flex-col"
+                                className="text-4xl md:text-5xl lg:text-[48px] font-bold leading-[1.1] flex flex-col"
                             >
                                 <span className="inline-block relative">
-                                    {['N', 'a', 't', 'u', 'r', 'e'].map((letter, i) => (
+                                    {['E', 'm', 'p', 'o', 'w', 'e','r','i','n','g',].map((letter, i) => (
                                         <motion.span
                                             key={i}
                                             className="text-brand-forest inline-block relative"
@@ -248,15 +248,42 @@ const Home = () => {
                                             {letter}
                                         </motion.span>
                                     ))}
+                                    <span className="pl-3">
+                                        {['L','i','f','e'].map((letter, i) => (
+                                            <motion.span
+                                                key={i}
+                                                className="text-brand-forest inline-block relative"
+                                                initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                                transition={{ duration: 0.6, delay: 0.1 + i * 0.05, ease: "easeOut" }}
+                                            >
+                                                {letter}
+                                            </motion.span>
+                                        ))}
+                                    </span>
+                                    
+                                    <span className="pl-3">
+                                        {['T','h','r','o','u','g','h'].map((letter, i) => (
+                                            <motion.span
+                                                key={i}
+                                                className="text-brand-forest inline-block relative"
+                                                initial={{ opacity: 0, filter: 'blur(10px)' }}
+                                                animate={{ opacity: 1, filter: 'blur(0px)' }}
+                                                transition={{ duration: 0.6, delay: 0.1 + i * 0.05, ease: "easeOut" }}
+                                            >
+                                                {letter}
+                                            </motion.span>
+                                        ))}
+                                    </span>
+                                </span>
                                     <motion.span
-                                        className="absolute bottom-0 left-0 h-[2px] bg-brand-forest/40"
+                                        className="block h-[2px] bg-brand-forest/40 mt-4 mb-2"
                                         initial={{ width: 0 }}
                                         animate={{ width: '100%' }}
                                         transition={{ duration: 1.2, delay: 0.5, ease: "easeOut" }}
                                     />
-                                </span>
                                 <span>
-                                    {['M', 'e', 'e', 't', 's'].map((letter, i) => (
+                                    {['N', 'a', 't', 'u', 'r','a','l'].map((letter, i) => (
                                         <motion.span
                                             key={i}
                                             className="relative z-10 text-brand-olive inline-block"
@@ -267,7 +294,7 @@ const Home = () => {
                                             {letter}
                                         </motion.span>
                                     ))}{' '}
-                                    {['H', 'e', 'a', 'l', 't', 'h'].map((letter, i) => (
+                                    {['H', 'e', 'a', 'l', 'i', 'n','g'].map((letter, i) => (
                                         <motion.span
                                             key={i}
                                             className="text-brand-forest inline-block"
@@ -531,7 +558,7 @@ const Home = () => {
                         <ScrollReveal y={36}>
                             <h2
                                 id="home-services-heading"
-                                className="font-[family-name:'Cormorant_Garamond',serif] text-3xl sm:text-4xl md:text-[2.75rem] font-semibold text-white tracking-tight max-w-xl leading-[1.15] mb-12 lg:mb-14"
+                                className="text-3xl sm:text-4xl md:text-[2.75rem] font-semibold text-white tracking-tight max-w-xl leading-[1.15] mb-12 lg:mb-14"
                             >
                                 Discover the healing power of nature
                             </h2>
@@ -553,7 +580,7 @@ const Home = () => {
                                             <Icon className="w-8 h-8 sm:w-9 sm:h-9" />
                                         </div>
                                         <div className="min-w-0 flex flex-col gap-2 pt-0.5">
-                                            <h3 className="font-[family-name:'Cormorant_Garamond',serif] text-lg sm:text-xl font-semibold text-brand-forest leading-snug">
+                                            <h3 className="text-lg sm:text-xl font-semibold text-brand-forest leading-snug">
                                                 {item.title}
                                             </h3>
                                             <Link
@@ -575,7 +602,7 @@ const Home = () => {
                             <ScrollReveal y={24}>
                                 <Link
                                     to="/services"
-                                    className="inline-flex items-center gap-2 rounded-full bg-rose-100/95 px-7 py-3.5 text-base font-semibold font-['Poppins'] text-brand-forest shadow-md shadow-black/10 transition hover:bg-rose-50 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
+                                    className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold text-white font-['Poppins'] bg-linear-to-r from-brand-forest to-brand-olive shadow-lg shadow-brand-forest/25 transition hover:shadow-xl hover:shadow-brand-forest/30 active:scale-[0.98]"
                                 >
                                     View all services
                                     <span className="text-lg leading-none" aria-hidden>
@@ -593,7 +620,7 @@ const Home = () => {
                 <section
                     ref={metricsRef}
                     id="metrics"
-                    className="relative w-full mt-12 lg:mt-20 py-20 lg:py-28 overflow-hidden scroll-mt-24"
+                    className="relative w-full py-20 lg:py-28 overflow-hidden scroll-mt-24"
                 >
                     <div className="absolute inset-0 overflow-hidden">
                         <motion.div
@@ -639,8 +666,10 @@ const Home = () => {
                 </section>
 
                 <section className="max-w-7xl mx-auto mt-20 px-4 space-y-16">
+                    
 
-                    {/* Section Break */}
+                    {/* Why choose us — services & pillars */}
+                    <Service />
                     <motion.div
                         className="flex items-center justify-center gap-6 py-2 m-0"
                         initial={reduceMotion ? false : { opacity: 0, y: 32 }}
@@ -675,12 +704,8 @@ const Home = () => {
                             style={{ transformOrigin: "left center" }}
                         />
                     </motion.div>
-
-                    {/* Why choose us — services & pillars */}
-                    <Service />
-
                     {/* Testimonials (reference: client feedback) */}
-                    <section ref={testimonialsRef} id="testimonials" className="scroll-mt-24 py-16 border-t border-brand-olive/35">
+                    <section ref={testimonialsRef} id="testimonials" className="scroll-mt-24 py-16">
                         <motion.div className="text-center mb-12" style={{ y: testimonialsHeadingY }}>
                             <ScrollReveal y={32}>
                                 <p className="text-sm font-bold tracking-widest uppercase text-brand-forest mb-2">Clients feedback</p>

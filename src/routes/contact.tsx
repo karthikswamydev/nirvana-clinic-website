@@ -51,7 +51,6 @@ function ContactPage() {
                     <div>
                       <p className="text-sm text-gray-500 font-['Poppins']">Email</p>
                       <p className="text-lg font-semibold text-gray-900 font-['Poppins']">contact@nirvanaclinic.com</p>
-                      <p className="text-sm text-gray-500 font-['Poppins']">(Email will be updated after domain purchase)</p>
                     </div>
                   </div>
 

@@ -22,7 +22,7 @@ const Service = () => {
 
   return (
     <section ref={sectionRef} id="services" className="scroll-mt-24">
-      <motion.div className="text-center space-y-4 py-12" style={{ y: servicesHeadingY }}>
+      <motion.div className="text-center space-y-4" style={{ y: servicesHeadingY }}>
         <motion.div
           className="inline-block"
           initial={reduceMotion ? false : { opacity: 0, y: 40 }}

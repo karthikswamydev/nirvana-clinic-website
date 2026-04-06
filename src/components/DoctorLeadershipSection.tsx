@@ -95,7 +95,7 @@ export function DoctorLeadershipSection() {
                         </p>
                     </div>
                     <Link
-                        to="/about"
+                        to="/contact"
                         className="inline-flex items-center gap-2 rounded-full px-7 py-3.5 text-[15px] font-semibold text-white font-['Poppins'] bg-linear-to-r from-brand-forest to-brand-olive shadow-lg shadow-brand-forest/25 transition hover:shadow-xl hover:shadow-brand-forest/30 active:scale-[0.98]"
                     >
                         Know More
