@@ -1,10 +1,28 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Cedarville+Cursive&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Qwitcher+Grypen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Qwitcher+Grypen:wght@400;700&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Italianno&family=Qwitcher+Grypen:wght@400;700&family=Science+Gothic:wght@100..900&display=swap');
 @import "tailwindcss";
+
+html {
+  scroll-behavior: smooth;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@theme {
+  --color-brand-forest: #2d545e;
+  --color-brand-olive: #8ba68e;
+  --color-brand-sage: #c0d4c0;
+  --color-brand-tan: #7a6652;
+  --color-brand-gold: #d4a03d;
+}
 
 @font-face {
   font-family: 'Coolvetica';
@@ -14,7 +32,7 @@
 }
 
 * {
-  font-family: 'Coolvetica', sans-serif;
+  /*font-family: 'Coolvetica', sans-serif;*/
 }
 
 @keyframes gradientMove {

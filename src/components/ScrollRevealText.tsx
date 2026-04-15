@@ -1,20 +1,27 @@
 import { useScroll, useTransform, motion } from 'motion/react'
 import { useRef } from 'react'
 
-export function ScrollRevealText() {
+type ScrollRevealTextProps = {
+  /** Replaces default `text-brand-forest` for dark backdrops */
+  textClassName?: string
+}
+
+export function ScrollRevealText({ textClassName }: ScrollRevealTextProps) {
   const targetRef = useRef<HTMLDivElement>(null)
   const { scrollYProgress } = useScroll({
     target: targetRef,
     offset: ["start 0.8", "end 0.3"]
   })
 
-  const text = "At Nirvana Integrated Clinic, we redefine healthcare through thoughtful integration and clinical precision. We believe true wellness is achieved not by treating isolated symptoms, but by harmonizing the body, mind, and lifestyle as one interconnected whole.Our approach blends evidence-based natural therapies with modern medical insight to craft deeply personalized treatment experiences. Every care plan is designed with intention — addressing root causes, restoring balance, and delivering meaningful, lasting transformation.Because exceptional care is not about doing more.It is about doing what is right — with clarity, expertise, and compassion."
+  const text = "Our passionate team blends ancient naturopathic wisdom with modern therapies, guided by a profound belief in the healing powers of nature. From acupuncture to yoga, we harness nature's gifts to unlock the body's innate ability to heal, promoting a lifestyle that embraces the principles of self-healing. Our mission is to guide individuals towards holistic, nourishing lifestyles, making vibrant living not just a goal, but a way of life."
 
   const words = text.split(' ')
 
   return (
     <div ref={targetRef} className="py-10">
-      <p className="text-balance leading-[1.15] font-medium text-green-800 text-center text-2xl md:text-3xl lg:text-4xl font-['Coolvetica'] max-w-5xl mx-auto">
+      <p
+        className={`text-balance leading-[1.15] font-medium text-center text-2xl md:text-3xl lg:text-4xl max-w-5xl mx-auto ${textClassName ?? "text-brand-forest"}`}
+      >
         {words.map((word, i) => {
           const start = i / words.length
           const end = start + (1 / words.length)
@@ -31,8 +38,8 @@ export function ScrollRevealText() {
 }
 
 function Word({ children, progress, range }: { children: string; progress: any; range: [number, number] }) {
-  const opacity = useTransform(progress, range, [0.3, 1])
-  const y = useTransform(progress, range, [4, 0])
+  const opacity = useTransform(progress, range, [0.12, 1])
+  const y = useTransform(progress, range, [14, 0])
 
   return (
     <motion.span

@@ -20,7 +20,7 @@ function GalleryPage() {
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
                     >
-                        <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-[#0F9B4A] via-[#0EB4A0] to-[#1B4C9B] bg-clip-text text-transparent font-['Poppins']">
+                        <h1 className="text-5xl md:text-6xl font-bold bg-linear-to-r from-brand-forest via-brand-olive to-brand-forest bg-clip-text text-transparent font-['Poppins']">
                             Gallery
                         </h1>
                         <p className="text-xl text-gray-600 max-w-3xl mx-auto font-['Poppins']">
@@ -38,7 +38,7 @@ function GalleryPage() {
                                 transition={{ duration: 0.5, delay: index * 0.1 }}
                                 viewport={{ once: true }}
                             >
-                                <h3 className="text-xl font-semibold bg-linear-to-r from-[#0F9B4A] to-[#0EB4A0] bg-clip-text text-transparent mb-2 font-['Poppins']">
+                                <h3 className="text-xl font-semibold bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-2 font-['Poppins']">
                                     {category.name}
                                 </h3>
                                 <p className="text-gray-500 font-['Poppins']">{category.count} photos</p>
