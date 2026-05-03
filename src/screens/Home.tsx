@@ -23,36 +23,42 @@ const treatments = [
         description: "Whole-person assessment and natural protocols that support the body’s own capacity to restore balance.",
         image: "/mud-therapy.png",
         imageAlt: "Natural mud therapy as part of holistic naturopathic care",
+        slug: "naturopathy-integrative-care",
     },
     {
         title: "Yoga & therapeutic movement",
         description: "Gentle, guided practices to improve mobility, breath, and steadiness without strain.",
         image: "/yoga-rehab.png",
         imageAlt: "Therapeutic yoga and guided movement for recovery and balance",
+        slug: "yoga-meditation",
     },
     {
         title: "Acupuncture",
         description: "Precise, evidence-informed needling to ease tension, support energy flow, and complement your plan.",
         image: "/foot-therapy.png",
         imageAlt: "Focused therapeutic work on the feet supporting energy and relaxation",
+        slug: "acupuncture-traditional-healing",
     },
     {
         title: "Hydrotherapy",
         description: "Water-based therapies that soothe circulation, recovery, and deep relaxation.",
         image: "/swedana.png",
         imageAlt: "Steam and water-based therapy for circulation and deep relaxation",
+        slug: "naturopathy-integrative-care",
     },
     {
         title: "Massage & bodywork",
         description: "Hands-on care to release tightness, reduce stress, and support musculoskeletal comfort.",
         image: "/kizhi-potli.png",
         imageAlt: "Warm herbal bolus massage and therapeutic bodywork",
+        slug: "manipulative-therapies",
     },
     {
         title: "Diet & lifestyle guidance",
         description: "Practical nutrition and daily habits aligned with your constitution and treatment goals.",
         image: "/care.png",
         imageAlt: "Supportive, personalised guidance for daily wellness and nutrition",
+        slug: "stress-lifestyle-disease-management",
     },
 ] as const;
 
@@ -212,13 +218,13 @@ const Home = () => {
 
     return (
         <div className="relative">
-            <div className="fixed inset-0 -z-10">
+            <div className="fixed inset-0 -z-10 opacity-[0.3]">
                 <Aurora colorStops={['#2d545e', '#8ba68e', '#c0d4c0']} amplitude={1.2} blend={0.55} speed={0.8} />
             </div>
             <CursorConfetti />
             {/* Hero Section */}
             {/* Theme: visiting card — forest #2d545e, olive #8ba68e, sage #c0d4c0 */}
-            <section ref={heroRef} className="relative w-full  py-20 lg:py-32 overflow-hidden">
+            <section ref={heroRef} className="relative w-full  py-10 lg:py-10 overflow-hidden">
                 {/* Subtle texture overlay */}
                 <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: 'url("data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%232d545e" fill-opacity="1"%3E%3Cpath d="M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")' }} />
 
@@ -495,13 +501,13 @@ const Home = () => {
                             {treatments.map((item, i) => (
                                 <motion.article
                                     key={item.title}
-                                    className="group overflow-hidden rounded-2xl border border-brand-sage/60 bg-white/65 backdrop-blur-sm shadow-lg shadow-brand-forest/5"
+                                    className="group flex h-full flex-col overflow-hidden rounded-2xl border border-brand-sage/60 bg-white/65 backdrop-blur-sm shadow-lg shadow-brand-forest/5"
                                     initial={{ opacity: 0, y: 48 }}
                                     whileInView={{ opacity: 1, y: 0 }}
                                     transition={{ duration: 0.6, delay: i * 0.08, ease: easeReveal }}
                                     viewport={{ once: true, margin: "0px 0px -12% 0px", amount: 0.12 }}
                                 >
-                                    <div className="relative aspect-4/3 overflow-hidden bg-brand-sage/20">
+                                    <div className="relative aspect-4/3 shrink-0 overflow-hidden bg-brand-sage/20">
                                         <img
                                             src={item.image}
                                             alt={item.imageAlt}
@@ -513,9 +519,16 @@ const Home = () => {
                                             {String(i + 1).padStart(2, "0")}
                                         </div>
                                     </div>
-                                    <div className="p-6 lg:p-7">
+                                    <div className="flex flex-1 flex-col p-6 lg:p-7">
                                         <h3 className="text-xl font-semibold text-brand-forest mb-2">{item.title}</h3>
-                                        <p className="text-gray-600 text-sm md:text-base leading-relaxed">{item.description}</p>
+                                        <p className="text-gray-600 text-sm md:text-base leading-relaxed grow">{item.description}</p>
+                                        <Link
+                                            to="/treatments/$slug"
+                                            params={{ slug: item.slug }}
+                                            className="mt-5 inline-flex w-fit items-center justify-center rounded-full border border-brand-forest/35 bg-brand-sage/25 px-5 py-2.5 text-sm font-semibold text-brand-forest transition-colors hover:border-brand-forest/60 hover:bg-brand-sage/45"
+                                        >
+                                            Know more
+                                        </Link>
                                     </div>
                                 </motion.article>
                             ))}
