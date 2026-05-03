@@ -2,8 +2,29 @@ import { createFileRoute, Link } from '@tanstack/react-router'
 import CatalogDetailPage from '../screens/CatalogDetailPage'
 import { buildCatalogLongform } from '../data/longformBuilder'
 import { getTreatmentBySlug } from '../data/treatmentsCatalog'
+import { buildPageMeta } from '../seo/buildPageMeta'
 
 export const Route = createFileRoute('/treatments/$slug')({
+  head: ({ params }) => {
+    const item = getTreatmentBySlug(params.slug)
+    if (!item) {
+      return {
+        ...buildPageMeta({
+          title: 'Treatment not found',
+          description: 'This treatment page is not available. Browse all treatment areas at Nirvana Integrated Clinic.',
+          path: `/treatments/${params.slug}`,
+        }),
+      }
+    }
+    return {
+      ...buildPageMeta({
+        title: item.title,
+        description: item.shortDescription,
+        path: `/treatments/${item.slug}`,
+        imagePath: item.image,
+      }),
+    }
+  },
   component: TreatmentSlugPage,
 })
 

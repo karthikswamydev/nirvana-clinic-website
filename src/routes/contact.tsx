@@ -1,7 +1,47 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
+import { useState, type FormEvent } from 'react'
+import { getEmailJsConfig, sendContactEmail, toTemplateParams, validateContactForm } from '../lib/emailjs'
+import { buildPageMeta } from '../seo/buildPageMeta'
+
+type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 function ContactPage() {
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [phone, setPhone] = useState('')
+  const [message, setMessage] = useState('')
+  const [status, setStatus] = useState<FormStatus>('idle')
+  const [feedback, setFeedback] = useState<string | null>(null)
+
+  const configReady = getEmailJsConfig().ready
+
+  async function handleSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault()
+    setFeedback(null)
+
+    const validationError = validateContactForm({ name, email, phone, message })
+    if (validationError) {
+      setStatus('error')
+      setFeedback(validationError)
+      return
+    }
+
+    setStatus('sending')
+    const result = await sendContactEmail(toTemplateParams({ name, email, phone, message }))
+    if (result.ok) {
+      setStatus('success')
+      setFeedback('Thank you — your message was sent. We will get back to you soon.')
+      setName('')
+      setEmail('')
+      setPhone('')
+      setMessage('')
+    } else {
+      setStatus('error')
+      setFeedback(result.message)
+    }
+  }
+
   return (
         <div className="max-w-7xl mx-auto px-4 py-16">
           <motion.div
@@ -94,44 +134,97 @@ function ContactPage() {
                 <h2 className="text-2xl font-semibold bg-linear-to-r from-brand-forest to-brand-olive bg-clip-text text-transparent mb-6 font-['Poppins']">
                   Send us a Message
                 </h2>
-                <form className="space-y-6">
+                {!configReady && (
+                  <p
+                    className="mb-4 rounded-lg border border-amber-200 bg-amber-50 px-4 py-3 text-sm text-amber-900 font-['Poppins']"
+                    role="status"
+                  >
+                    Email sending is not configured. Add{' '}
+                    <code className="rounded bg-amber-100/80 px-1 text-xs">VITE_EMAILJS_PUBLIC_KEY</code>,{' '}
+                    <code className="rounded bg-amber-100/80 px-1 text-xs">VITE_EMAILJS_SERVICE_ID</code>, and{' '}
+                    <code className="rounded bg-amber-100/80 px-1 text-xs">VITE_EMAILJS_TEMPLATE_ID</code> to{' '}
+                    <code className="rounded bg-amber-100/80 px-1 text-xs">.env.local</code> (see EmailJS dashboard),
+                    then restart the dev server.
+                  </p>
+                )}
+                {feedback && (
+                  <p
+                    className={`mb-4 rounded-lg border px-4 py-3 text-sm font-['Poppins'] ${
+                      status === 'success'
+                        ? 'border-emerald-200 bg-emerald-50 text-emerald-900'
+                        : 'border-red-200 bg-red-50 text-red-900'
+                    }`}
+                    role="status"
+                  >
+                    {feedback}
+                  </p>
+                )}
+                <form className="space-y-6" onSubmit={handleSubmit} noValidate>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Name</label>
+                    <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">
+                      Name
+                    </label>
                     <input
+                      id="contact-name"
+                      name="from_name"
                       type="text"
+                      autoComplete="name"
+                      value={name}
+                      onChange={(ev) => setName(ev.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Your name"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Email</label>
+                    <label htmlFor="contact-email" className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">
+                      Email
+                    </label>
                     <input
+                      id="contact-email"
+                      name="from_email"
                       type="email"
+                      autoComplete="email"
+                      value={email}
+                      onChange={(ev) => setEmail(ev.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="your@email.com"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Phone</label>
+                    <label htmlFor="contact-phone" className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">
+                      Phone
+                    </label>
                     <input
+                      id="contact-phone"
+                      name="phone"
                       type="tel"
+                      autoComplete="tel"
+                      value={phone}
+                      onChange={(ev) => setPhone(ev.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Your phone number"
                     />
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">Message</label>
+                    <label htmlFor="contact-message" className="block text-sm font-medium text-gray-700 mb-2 font-['Poppins']">
+                      Message
+                    </label>
                     <textarea
+                      id="contact-message"
+                      name="message"
                       rows={6}
+                      value={message}
+                      onChange={(ev) => setMessage(ev.target.value)}
                       className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-brand-olive focus:border-transparent font-['Poppins']"
                       placeholder="Tell us about your health concerns..."
-                    ></textarea>
+                    />
                   </div>
                   <button
                     type="submit"
-                    className="w-full bg-brand-forest text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-forest/90 transition-colors shadow-lg font-['Poppins']"
+                    disabled={status === 'sending' || !configReady}
+                    className="w-full bg-brand-forest text-white px-8 py-4 rounded-lg font-semibold hover:bg-brand-forest/90 transition-colors shadow-lg font-['Poppins'] disabled:cursor-not-allowed disabled:opacity-60"
                   >
-                    Send Message
+                    {status === 'sending' ? 'Sending…' : 'Send Message'}
                   </button>
                 </form>
               </div>
@@ -161,5 +254,13 @@ function ContactPage() {
 }
 
 export const Route = createFileRoute('/contact')({
+  head: () => ({
+    ...buildPageMeta({
+      title: 'Contact',
+      description:
+        'Phone, email, address, and clinic hours for Nirvana Integrated Clinic — Manamelkudi, Pudukkottai district, Tamil Nadu.',
+      path: '/contact',
+    }),
+  }),
   component: ContactPage,
 })
