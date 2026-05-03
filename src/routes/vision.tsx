@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import Header from '../components/Header'
+import { buildPageMeta } from '../seo/buildPageMeta'
 import { motion } from 'motion/react'
 
 function VisionPage() {
@@ -124,5 +125,13 @@ function VisionPage() {
 }
 
 export const Route = createFileRoute('/vision')({
+  head: () => ({
+    ...buildPageMeta({
+      title: 'Our vision',
+      description:
+        'Building the future of integrated healthcare in India — AYUSH and modern diagnostics working together for true healing.',
+      path: '/vision',
+    }),
+  }),
   component: VisionPage,
 })

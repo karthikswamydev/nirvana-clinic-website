@@ -1,5 +1,6 @@
 import { createFileRoute } from '@tanstack/react-router'
 import { motion } from 'motion/react'
+import { buildPageMeta } from '../seo/buildPageMeta'
 import { AboutExpertiseVisionSection } from '../components/AboutExpertiseVisionSection'
 import { DoctorLeadershipSection } from '../components/DoctorLeadershipSection'
 
@@ -29,5 +30,13 @@ function AboutPage() {
 }
 
 export const Route = createFileRoute('/about')({
+  head: () => ({
+    ...buildPageMeta({
+      title: 'About us',
+      description:
+        'Expertise in integrated natural medicine, vision for whole-person care, and clinical leadership at Nirvana Integrated Clinic.',
+      path: '/about',
+    }),
+  }),
   component: AboutPage,
 })
