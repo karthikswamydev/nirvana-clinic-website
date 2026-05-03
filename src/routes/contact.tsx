@@ -145,8 +145,15 @@ function ContactPage() {
             transition={{ duration: 0.8 }}
             viewport={{ once: true }}
           >
-            <div className="aspect-video bg-gray-200 flex items-center justify-center">
-              <p className="text-gray-500 font-['Poppins']">Google Maps Location (To be added)</p>
+            <div className="relative aspect-video w-full min-h-[240px] bg-gray-200">
+              <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3928.714976582813!2d79.22818977475875!3d10.040362272339467!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b0023fc04896495%3A0x29fd630b690fa256!2sNirvana%20Integrated%20Clinic!5e0!3m2!1sen!2sza!4v1777818916031!5m2!1sen!2sza"
+                title="Nirvana Integrated Clinic on Google Maps"
+                className="absolute inset-0 h-full w-full border-0"
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                allowFullScreen
+              />
             </div>
           </motion.div>
         </div>

@@ -18,6 +18,10 @@ import { Route as ContactRouteImport } from './routes/contact'
 import { Route as ConditionsRouteImport } from './routes/conditions'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as TreatmentsIndexRouteImport } from './routes/treatments.index'
+import { Route as ServicesIndexRouteImport } from './routes/services.index'
+import { Route as TreatmentsSlugRouteImport } from './routes/treatments.$slug'
+import { Route as ServicesSlugRouteImport } from './routes/services.$slug'
 
 const VisionRoute = VisionRouteImport.update({
   id: '/vision',
@@ -64,6 +68,26 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const TreatmentsIndexRoute = TreatmentsIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => TreatmentsRoute,
+} as any)
+const ServicesIndexRoute = ServicesIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => ServicesRoute,
+} as any)
+const TreatmentsSlugRoute = TreatmentsSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => TreatmentsRoute,
+} as any)
+const ServicesSlugRoute = ServicesSlugRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ServicesRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
@@ -72,9 +96,13 @@ export interface FileRoutesByFullPath {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/services': typeof ServicesRoute
-  '/treatments': typeof TreatmentsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/treatments': typeof TreatmentsRouteWithChildren
   '/vision': typeof VisionRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/services/': typeof ServicesIndexRoute
+  '/treatments/': typeof TreatmentsIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
@@ -83,9 +111,11 @@ export interface FileRoutesByTo {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/services': typeof ServicesRoute
-  '/treatments': typeof TreatmentsRoute
   '/vision': typeof VisionRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/services': typeof ServicesIndexRoute
+  '/treatments': typeof TreatmentsIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -95,9 +125,13 @@ export interface FileRoutesById {
   '/contact': typeof ContactRoute
   '/facilities': typeof FacilitiesRoute
   '/gallery': typeof GalleryRoute
-  '/services': typeof ServicesRoute
-  '/treatments': typeof TreatmentsRoute
+  '/services': typeof ServicesRouteWithChildren
+  '/treatments': typeof TreatmentsRouteWithChildren
   '/vision': typeof VisionRoute
+  '/services/$slug': typeof ServicesSlugRoute
+  '/treatments/$slug': typeof TreatmentsSlugRoute
+  '/services/': typeof ServicesIndexRoute
+  '/treatments/': typeof TreatmentsIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -111,6 +145,10 @@ export interface FileRouteTypes {
     | '/services'
     | '/treatments'
     | '/vision'
+    | '/services/$slug'
+    | '/treatments/$slug'
+    | '/services/'
+    | '/treatments/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
@@ -119,9 +157,11 @@ export interface FileRouteTypes {
     | '/contact'
     | '/facilities'
     | '/gallery'
+    | '/vision'
+    | '/services/$slug'
+    | '/treatments/$slug'
     | '/services'
     | '/treatments'
-    | '/vision'
   id:
     | '__root__'
     | '/'
@@ -133,6 +173,10 @@ export interface FileRouteTypes {
     | '/services'
     | '/treatments'
     | '/vision'
+    | '/services/$slug'
+    | '/treatments/$slug'
+    | '/services/'
+    | '/treatments/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -142,8 +186,8 @@ export interface RootRouteChildren {
   ContactRoute: typeof ContactRoute
   FacilitiesRoute: typeof FacilitiesRoute
   GalleryRoute: typeof GalleryRoute
-  ServicesRoute: typeof ServicesRoute
-  TreatmentsRoute: typeof TreatmentsRoute
+  ServicesRoute: typeof ServicesRouteWithChildren
+  TreatmentsRoute: typeof TreatmentsRouteWithChildren
   VisionRoute: typeof VisionRoute
 }
 
@@ -212,8 +256,64 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/treatments/': {
+      id: '/treatments/'
+      path: '/'
+      fullPath: '/treatments/'
+      preLoaderRoute: typeof TreatmentsIndexRouteImport
+      parentRoute: typeof TreatmentsRoute
+    }
+    '/services/': {
+      id: '/services/'
+      path: '/'
+      fullPath: '/services/'
+      preLoaderRoute: typeof ServicesIndexRouteImport
+      parentRoute: typeof ServicesRoute
+    }
+    '/treatments/$slug': {
+      id: '/treatments/$slug'
+      path: '/$slug'
+      fullPath: '/treatments/$slug'
+      preLoaderRoute: typeof TreatmentsSlugRouteImport
+      parentRoute: typeof TreatmentsRoute
+    }
+    '/services/$slug': {
+      id: '/services/$slug'
+      path: '/$slug'
+      fullPath: '/services/$slug'
+      preLoaderRoute: typeof ServicesSlugRouteImport
+      parentRoute: typeof ServicesRoute
+    }
   }
 }
+
+interface ServicesRouteChildren {
+  ServicesSlugRoute: typeof ServicesSlugRoute
+  ServicesIndexRoute: typeof ServicesIndexRoute
+}
+
+const ServicesRouteChildren: ServicesRouteChildren = {
+  ServicesSlugRoute: ServicesSlugRoute,
+  ServicesIndexRoute: ServicesIndexRoute,
+}
+
+const ServicesRouteWithChildren = ServicesRoute._addFileChildren(
+  ServicesRouteChildren,
+)
+
+interface TreatmentsRouteChildren {
+  TreatmentsSlugRoute: typeof TreatmentsSlugRoute
+  TreatmentsIndexRoute: typeof TreatmentsIndexRoute
+}
+
+const TreatmentsRouteChildren: TreatmentsRouteChildren = {
+  TreatmentsSlugRoute: TreatmentsSlugRoute,
+  TreatmentsIndexRoute: TreatmentsIndexRoute,
+}
+
+const TreatmentsRouteWithChildren = TreatmentsRoute._addFileChildren(
+  TreatmentsRouteChildren,
+)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
@@ -222,8 +322,8 @@ const rootRouteChildren: RootRouteChildren = {
   ContactRoute: ContactRoute,
   FacilitiesRoute: FacilitiesRoute,
   GalleryRoute: GalleryRoute,
-  ServicesRoute: ServicesRoute,
-  TreatmentsRoute: TreatmentsRoute,
+  ServicesRoute: ServicesRouteWithChildren,
+  TreatmentsRoute: TreatmentsRouteWithChildren,
   VisionRoute: VisionRoute,
 }
 export const routeTree = rootRouteImport
