@@ -45,7 +45,7 @@ export function organizationJsonLd() {
       '@type': 'MedicalClinic',
       name: SITE_NAME,
       url: absoluteUrl('/'),
-      email: 'contact@nirvanaclinic.com',
+      email: 'contact@nirvanaintegratedclinic.com',
       telephone: '+91-7448811001',
       address: {
         '@type': 'PostalAddress',
