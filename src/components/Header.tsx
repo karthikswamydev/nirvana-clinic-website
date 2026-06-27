@@ -82,7 +82,7 @@ export default function Header() {
             className="shrink-0 flex items-center gap-3 sm:gap-4 min-w-0 group"
             aria-label="Nirvana Integrated Clinic home"
           >
-            <img className="max-w-[200px] h-auto object-contain" src="/brand/nirvana-emblem.png" alt="" />
+            <img className="md:max-w-[320px] max-w-[260px] h-auto object-contain" src="/brand/nirvana-emblem.png" alt="" />
           </Link>
 
           <button
