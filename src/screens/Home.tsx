@@ -56,8 +56,8 @@ const treatments = [
     {
         title: "Diet & lifestyle guidance",
         description: "Practical nutrition and daily habits aligned with your constitution and treatment goals.",
-        image: "/care.png",
-        imageAlt: "Supportive, personalised guidance for daily wellness and nutrition",
+        image: "/equipment/herbal-oils.jpg",
+        imageAlt: "Natural oils and herbal wellness products for diet and lifestyle guidance",
         slug: "stress-lifestyle-disease-management",
     },
 ] as const;

@@ -40,7 +40,7 @@ export const servicesCatalog: ServiceCatalogEntry[] = [
     title: 'Customized health packages',
     shortDescription:
       'Prepaid bundles that mix doctor time, therapies, and follow-up messages—priced for transparency and predictable budgeting.',
-    image: '/care.png',
+    image: '/Therapy-room.png',
     imageAlt: 'Personalised health package planning at the clinic',
     intro:
       'Packages remove the mental load of “should I book another session?” They are assembled after an initial assessment so every hour on the calendar earns its place. Upgrades or downshifts stay possible if your body responds faster or slower than expected.',

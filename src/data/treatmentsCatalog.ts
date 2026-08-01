@@ -19,8 +19,8 @@ export const treatmentsCatalog: TreatmentCatalogEntry[] = [
     title: "Women's health and holistic wellness",
     shortDescription:
       'Cycle-aware nutrition, stress care, and natural therapies that support hormonal rhythm, fertility goals, and long-term vitality.',
-    image: '/care.png',
-    imageAlt: 'Calm clinical setting for holistic women’s wellness and supportive care',
+    image: '/gokul-gurung.jpg',
+    imageAlt: 'Traditional Ayurvedic wellness tools and herbal preparations for holistic care',
     intro:
       'We take a whole-person view of women’s health—looking at sleep, digestion, movement, and emotional load alongside hormones. Plans are paced to your life stage, whether you are navigating menstrual pain, PCOS patterns, perimenopause, or simply want steadier energy and mood.',
     highlights: [
@@ -34,8 +34,8 @@ export const treatmentsCatalog: TreatmentCatalogEntry[] = [
     title: 'Stress and lifestyle-related conditions',
     shortDescription:
       'Structured support for burnout, poor sleep, weight drift, blood pressure variability, and other patterns tied to modern routines.',
-    image: '/ShidhoraOil.png',
-    imageAlt: 'Relaxation-focused therapy environment for stress and nervous system care',
+    image: '/equipment/healing-garden.jpg',
+    imageAlt: 'Peaceful healing garden setting for stress relief and nervous system care',
     intro:
       'Many chronic issues begin as “busy life” problems—skipped meals, late screens, sedentary weeks, and shallow breathing. We help you map those triggers, then replace them with small, repeatable wins that rebuild resilience without an unrealistic overhaul on day one.',
     highlights: [
@@ -49,8 +49,8 @@ export const treatmentsCatalog: TreatmentCatalogEntry[] = [
     title: 'Skin and hair support through natural care',
     shortDescription:
       'Nutrition, detox-style habits, and gentle external therapies aimed at clearer skin and stronger hair growth cycles.',
-    image: '/oil-treatment.png',
-    imageAlt: 'Therapeutic oil application supporting skin and scalp wellness',
+    image: '/equipment/ayurvedic-tools.jpg',
+    imageAlt: 'Ayurvedic herbs, oils, and traditional preparations for skin and scalp wellness',
     intro:
       'Skin and hair often mirror digestion, hydration, inflammation, and micronutrient status. We combine internal support with external routines that respect your barrier—no harsh promises, just consistent care that addresses common drivers like poor elimination, low iron, or high stress.',
     highlights: [

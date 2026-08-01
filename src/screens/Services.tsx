@@ -6,7 +6,7 @@ import { servicesCatalog } from '../data/servicesCatalog'
 
 const serviceJourney: { src: string; alt: string; title: string; text: string }[] = [
   {
-    src: '/care.png',
+    src: '/Therapy-room.png',
     alt: 'One-to-one clinical assessment and supportive planning discussion',
     title: 'Assessment and clarity',
     text: 'We map goals, constraints, and any medical collaboration needed so packages and programs fit real life—not a fantasy schedule.',
