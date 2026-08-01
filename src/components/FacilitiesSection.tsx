@@ -58,10 +58,10 @@ export function FacilitiesSection() {
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
         >
-          <h2 className="relative inline-block text-4xl md:text-5xl font-semibold text-gray-900 font-['Poppins']">
-            <span className="bg-linear-to-r from-brand-sage to-brand-olive/40 text-brand-forest px-4 md:px-5 py-1 md:py-2 inline-block font-bold rounded-lg">
+          <h2 className="text-4xl sm:text-5xl md:text-6xl font-bold bg-linear-to-r from-brand-forest via-brand-olive to-brand-forest bg-clip-text text-transparent font-['Poppins']">
+            
               Our Facilities
-            </span>
+
           </h2>
 
           <p className="text-lg text-gray-600 mt-2 max-w-2xl mx-auto font-['Poppins'] leading-relaxed">

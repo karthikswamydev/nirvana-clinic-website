@@ -141,8 +141,8 @@ function TreatmentsPage() {
           >
             <figure className="m-0 rounded-2xl overflow-hidden shadow-xl border border-brand-olive/20 aspect-4/3 md:aspect-auto md:min-h-[280px]">
               <img
-                src="/ShidhoraOil.png"
-                alt="Deep relaxation therapy supporting the nervous system and restorative sleep"
+                src="/equipment/healing-garden.jpg"
+                alt="Peaceful healing garden setting supporting the nervous system and restorative sleep"
                 className="w-full h-full object-cover"
                 loading="lazy"
                 decoding="async"
