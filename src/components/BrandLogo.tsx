@@ -1,4 +1,4 @@
-const EMBLEM_SRC = '/brand/nirvana-emblem.svg'
+const EMBLEM_SRC = '/brand/nirvana-emblem.png'
 
 type BrandLogoProps = {
   /** Round mark for header / compact placements (default). */
